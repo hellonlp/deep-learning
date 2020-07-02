@@ -151,7 +151,7 @@ def back_propagation_cross_entropy(W1, b1, W2, b2, loss, x, output2, output1, lr
     # Update the weight(w2) and the biais(b2):  ΔW2 = eta*delta2*output1
     W2 = W2 - hp.lr * np.dot(output1.T , delta2)
     b2 = b2 - hp.lr * delta2
-    # Update the weight(w2) and the biais(b2):  ΔW1 = eta*delta1*x
+    # Update the weight(w1) and the biais(b1):  ΔW1 = eta*delta1*x
     W1 = W1 - hp.lr * np.dot(x.T , delta1)
     b1 = b1 - hp.lr * delta1
     return W1, b1, W2, b2
@@ -169,7 +169,7 @@ def back_propagation_cross_entropy_batch(W1, b1, W2, b2, loss, x, output2, outpu
     # Update the weight(w2) and the biais(b2):  ΔW2 = eta*delta2*output1
     W2 = W2 - hp.lr * np.dot(output1.T , delta2) / batch_size
     b2 = b2 - hp.lr * np.average(delta2, 0)
-    # Update the weight(w2) and the biais(b2):  ΔW1 = eta*delta1*x
+    # Update the weight(w1) and the biais(b1):  ΔW1 = eta*delta1*x
     W1 = W1 - hp.lr * np.dot(x.T , delta1) / batch_size
     b1 = b1 - hp.lr * np.average(delta1, 0)      
     return W1, b1, W2, b2
@@ -187,7 +187,7 @@ def back_propagation_cross_entropy_batch_2(W1, b1, W2, b2, loss, x, output2, out
     # Update the weight(w2) and the biais(b2):  ΔW2 = eta*delta2*output1
     W2 = W2 - hp.lr * np.dot(output1.T , delta2) / batch_size
     b2 = b2 - hp.lr * np.average(delta2, 0)
-    # Update the weight(w2) and the biais(b2):  ΔW1 = eta*delta1*x
+    # Update the weight(w1) and the biais(b1):  ΔW1 = eta*delta1*x
     W1 = W1 - hp.lr * np.dot(x.T , delta1) / batch_size
     b1 = b1 - hp.lr * np.average(delta1, 0)     
     return W1, b1, W2, b2
