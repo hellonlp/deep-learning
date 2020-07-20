@@ -32,17 +32,17 @@ def train(x, y, x_test, y_test, batch_size=hp.batch_size):
             # Backward
             w1, b1, w2, b2 = NN.backward(np.array(x_bloc[i]), np.array([y_bloc[i]]).T, output1, output2, w1, b1, w2, b2,
                                          hp.lr, batch_size)
-            # Train data
+            # Train loss and accuracy
             loss = NN.loss(np.array([y_bloc[i]]).T, output2, batch_size)
             accuracy = NN.accuracy(y_bloc[i], output2)
             global_loss.append(loss)
             global_accuracy.append(accuracy)
             global_step = global_step + 1
             global_steps.append(global_step)
-            # Test data
-            output1_test, output2_test = NN.forward(np.array(test_data), w1, b1, w2, b2)
-            loss_test = NN.loss(np.array([test_label]).T, output2_test, len(test_label))
-            accuracy_test = NN.accuracy(test_label, output2_test)
+            # Test loss and accuracy
+            output1_test, output2_test = NN.forward(np.array(x_test), w1, b1, w2, b2)
+            loss_test = NN.loss(np.array([y_test]).T, output2_test, len(y_test))
+            accuracy_test = NN.accuracy(y_test, output2_test)
             global_loss_test.append(loss_test) 
             global_accuracy_test.append(accuracy_test)
             # Log
@@ -53,9 +53,10 @@ def train(x, y, x_test, y_test, batch_size=hp.batch_size):
                     time_now_string(), epoch, loss_test, accuracy_test))                
         # Save model
         save_model(w1, b1, w2, b2, 'model/model_%s.npz' % (epoch))
-    print('Train Done!')
+    # Plot
     plot_loss(global_steps,global_loss,global_steps,global_loss_test)
     plot_accuracy(global_steps,global_accuracy,global_steps,global_accuracy_test)
+    print('Train Done!')
     return w1, b1, w2, b2
 
 
