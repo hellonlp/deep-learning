@@ -61,9 +61,10 @@ def train(x, y, x_test, y_test, batch_size=hp.batch_size):
 
 
 if __name__ == '__main__':
+    # Load data
     train_data, train_label = load_train_data()
     test_data, test_label = load_test_data()
-    ### 001
+    # Training
     w1, w2, b1, b2 = train(train_data, train_label, test_data, test_label)
 
 
