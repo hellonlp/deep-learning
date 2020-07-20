@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plot
 
 
-# 当前时间正常格式
+
 def time_now_string():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
 
@@ -24,9 +24,6 @@ def cut_list(data, size):
 
 
 def load_txt(file):
-    """
-    load a txt
-    """
     with  open(file, encoding='utf-8', errors='ignore') as fp:
         lines = fp.readlines()
         lines = [l.strip() for l in lines]
@@ -40,9 +37,6 @@ def save_txt(file, lines):
 
 
 def shuffle_two(a1, a2):
-    """
-    随机打乱a1和a2两个列表
-    """
     ran = np.arange(len(a1))
     np.random.shuffle(ran)
     return [a1[l] for l in ran], [a2[l] for l in ran]
