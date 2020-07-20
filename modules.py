@@ -63,32 +63,21 @@ def full_connection(input_, weight, bias):
 
 def tanh_derivative(y):
     """
-    tanh函数的导数：1-y^2
+    tanh function：1-y^2
     """
     return 1 - np.tanh(y)*np.tanh(y)
 
 
 def sigmoid_derivative(y):
     """
-    sigmoid函数的导数：y-y^2
+    sigmoid function：y-y^2
     """
     return sigmoid(y) - sigmoid(y)*sigmoid(y)
 
 
-def mlp(x, w1, b1, w2, b2):
-    """
-    1、前向传播，计算得到预测值。
-    2、z为隐藏层
-    3、y为输出层
-    """
-    output1 = sigmoid(np.dot(x , w1) + b1)
-    output2 = sigmoid(np.dot(output1 , w1) + b2)
-    return output2
-
-
 def back_propagation_quadratic(W1, b1, W2, b2, error, x, output2, output1, lr):
     """
-    第一个激活函数是sigmoid，第二个激活函数也是sigmoid
+    The first activation function is the sigmoid, and the second is also sigmoid.
     Objective function：Quadratic cost 
                   f(x) = 1/2*multiply(yp-y,yp-y)
     """
@@ -103,9 +92,11 @@ def back_propagation_quadratic(W1, b1, W2, b2, error, x, output2, output1, lr):
     b1 = b1 - hp.lr * delta1
     return W1, b1, W2, b2
 
+
 def back_propagation_quadratic_batch(W1, b1, W2, b2, error, x, output2, output1, lr, batch_size):
     """
-    第一个激活函数是sigmoid，第二个激活函数也是sigmoid
+    Back propagation with batch samples.
+    The first activation function is the sigmoid, and the second is also sigmoid. 
     Objective function：Quadratic cost 
                   f(x) = 1/2*multiply(yp-y,yp-y)
     """
@@ -120,9 +111,11 @@ def back_propagation_quadratic_batch(W1, b1, W2, b2, error, x, output2, output1,
     b1 = b1 - hp.lr * np.average(delta1, 0)
     return W1, b1, W2, b2
 
+
 def back_propagation_quadratic_batch_2(W1, b1, W2, b2, error, x, output2, output1, lr, batch_size):
     """
-    第一个激活函数是tanh，第二个激活函数sigmoid
+    Back propagation with batch samples.
+    The first activation function is the tanh, and the second is sigmoid.
     Objective function：Quadratic cost 
                   f(x) = 1/2*(yp-y)**2
     """
@@ -138,10 +131,9 @@ def back_propagation_quadratic_batch_2(W1, b1, W2, b2, error, x, output2, output
     return W1, b1, W2, b2
 
 
-# 梯度下降
 def back_propagation_cross_entropy(W1, b1, W2, b2, error, x, output2, output1, lr):
     """
-    第一个激活函数是sigmoid，第二个激活函数也是sigmoid
+    The first activation function is the sigmoid, and the second is also sigmoid.
     Objective function：Cross-Entropy 
                  f(x) = -[y*ln(yp)+(1−y)ln(1−yp)]
     """
@@ -159,7 +151,8 @@ def back_propagation_cross_entropy(W1, b1, W2, b2, error, x, output2, output1, l
 
 def back_propagation_cross_entropy_batch(W1, b1, W2, b2, error, x, output2, output1, lr, batch_size):
     """
-    第一个激活函数是sigmoid，第二个激活函数也是sigmoid
+    Back propagation with batch samples.
+    The first activation function is the sigmoid, and the second is also sigmoid.    
     Objective function：Cross-Entropy 
                  f(x) = -[y*ln(yp)+(1−y)ln(1−yp)]
     """
@@ -177,7 +170,8 @@ def back_propagation_cross_entropy_batch(W1, b1, W2, b2, error, x, output2, outp
 
 def back_propagation_cross_entropy_batch_2(W1, b1, W2, b2, error, x, output2, output1, lr, batch_size):
     """
-    第一个激活函数是tanh，第二个激活函数sigmoid
+    Back propagation with batch samples.
+    The first activation function is the tanh, and the second is sigmoid.
     Objective function：Cross-Entropy 
                  f(x) = -[yln(yp)+(1−y)ln(1−yp)]
     """
@@ -191,6 +185,7 @@ def back_propagation_cross_entropy_batch_2(W1, b1, W2, b2, error, x, output2, ou
     W1 = W1 - hp.lr * np.dot(x.T , delta1) / batch_size
     b1 = b1 - hp.lr * np.average(delta1, 0)     
     return W1, b1, W2, b2
+
 
 if __name__ == '__main__':
     ##
