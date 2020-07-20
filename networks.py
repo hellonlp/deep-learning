@@ -14,6 +14,9 @@ from nn.modules import back_propagation_quadratic_batch,back_propagation_quadrat
 
 class NeuralNetwork(object):
     def __init__(self):
+        """
+        Initialize the weight and the bias.
+        """
         # Hidden Layer
         self.weight1_initial = np.random.randn(hp.W1_size[0], hp.W1_size[1])
         self.bias1_initial = np.zeros([1, hp.bais1_size])
@@ -22,16 +25,28 @@ class NeuralNetwork(object):
         self.bias2_initial = np.zeros([1, hp.bais2_size])
 
     def forward(self, x, w1, b1, w2, b2):
+        """
+        The forward and the backward must have the same activation activation.
+        """
         return full_connection_tanh(x, w1, b1), full_connection_sigmoid(output1, w2, b2)
 
     def backward(self, x, y, output1, output2, w1, b1, w2, b2, batch_size, lr=hp.lr):
+        """
+        The forward and the backward must have the same activation activation.
+        """
         return back_propagation_cross_entropy_batch_2(w1, b1, w2, b2, error_sample(y, output2), x, output2, output1, lr,
                                                     batch_size)
     
     def loss(self,y,yp):
+        """
+        Loss function: softmax cross-entropy .
+        """     
         return sparse_softmax_cross_entropy_with_logits(yp,y)
 
     def accuracy(self, y, yp):
+        """
+        Compte the accuracy.
+        """
         predict = [1 if l > 0.5 else 0 for l in np.array(yp)]
         return round(sum([1 if i == j else 0 for i, j in zip(y, predict)]) / len(predict), 4)
 
