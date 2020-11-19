@@ -12,6 +12,7 @@ from nn.modules import full_connection_sigmoid, error_sample,full_connection_tan
 from nn.modules import back_propagation_cross_entropy_batch,back_propagation_cross_entropy_batch_2
 from nn.modules import back_propagation_quadratic_batch,back_propagation_quadratic_batch_2
 
+
 class NeuralNetwork(object):
     def __init__(self):
         """
