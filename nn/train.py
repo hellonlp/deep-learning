@@ -5,12 +5,15 @@ Created on Sat Jun 27 00:20:28 2020
 @author: CM
 """
 
+
 import numpy as np
+
 from nn.networks import NeuralNetwork
 from nn.hyperparameters import Hyperparamters as hp
 from nn.load_data import load_train_data,load_test_data
 from nn.utils import cut_list, time_now_string, save_model, shuffle_two
 from nn.utils import plot_loss, plot_accuracy
+
 
 NN = NeuralNetwork()
 
@@ -66,14 +69,4 @@ if __name__ == '__main__':
     test_data, test_label = load_test_data()
     # Training
     w1, w2, b1, b2 = train(train_data, train_label, test_data, test_label)
-
-
-
-
-
-
-
-
-
-
 
