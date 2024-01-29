@@ -5,7 +5,9 @@ Created on Sat Jun 27 01:06:44 2020
 @author: CM
 """
 
+
 import numpy as np
+
 from nn.hyperparameters import Hyperparamters as hp
 from nn.modules import sparse_softmax_cross_entropy_with_logits
 from nn.modules import full_connection_sigmoid, error_sample,full_connection_tanh
