@@ -5,6 +5,7 @@ Created on Mon Jun 22 10:13:58 2020
 @author: cm
 """
 
+
 import numpy as np
 from nn.hyperparameters import Hyperparamters as hp
 
@@ -190,8 +191,3 @@ def back_propagation_cross_entropy_batch_2(W1, b1, W2, b2, error, x, output2, ou
 if __name__ == '__main__':
     ##
     print('modules')
-
-
-
-
-
