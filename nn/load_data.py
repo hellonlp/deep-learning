@@ -5,13 +5,17 @@ Created on Sat Jun 27 00:32:00 2020
 @author: CM
 """
 
+
 import jieba
 import numpy as np
+
 from nn.utils import load_txt
 from nn.hyperparameters import Hyperparamters as hp
 
+
 vocabulary = load_txt(hp.file_vocabulary)[:hp.sequence_length]
 vocabulary_set = set(vocabulary)
+
 
 def load_train_data(file_train_data=hp.file_train_data,
                     file_train_label=hp.file_train_label):
@@ -45,16 +49,4 @@ if __name__ == "__main__":
     #
     test_data, test_label = load_test_data()
     print(test_data.shape, test_label.shape)
-    
-    
-
-
-
-
-    
-    
-    
-    
-    
-    
     
