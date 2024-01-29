@@ -5,7 +5,9 @@ Created on Sat Jun 27 02:31:02 2020
 @author: CM
 """
 
+
 import numpy as np
+
 from nn.utils import load_model
 from nn.networks import NeuralNetwork
 from nn.hyperparameters import Hyperparamters as hp
